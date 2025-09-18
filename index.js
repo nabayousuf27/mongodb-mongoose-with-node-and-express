@@ -82,3 +82,11 @@ User.findById({_id:'68cc104e9370ef802230420b'}).then((res)=>{
 User.updateOne({name:"Youduf"},{name:"Yousuf"}).then((res)=>{
   console.log(res);
 });
+
+User.updateMany({age:{ $gt:20 } },{age:20}).then((res)=>{
+  console.log(res);
+});
+
+User.findOneAndUpdate({age:{ $gt:19 } },{age:24},{new:true}).then((res)=>{
+  console.log(res);
+});
