@@ -30,23 +30,23 @@ const User = mongoose.model("User" ,userSchema);
 //model (user) =its basically a class -> class ki objects create hoti hain -> so for this  user we will crete object and that object will be our document
 //model represts a collection , and each object of that model represents a document inside that collection
 
-// const user1 = new User({
-//   name: "Naba",
-//   email: "naba@yahoo.in",
-//   age:18,
-// });
-// const user2 = new User({
-//   name: "Yousuf",
-//   email: "ya@yahoo.in",
-//   age:18,
-// });
+const user1 = new User({
+  name: "Naba",
+  email: "naba@yahoo.in",
+  age:18,
+});
+const user2 = new User({
+  name: "Yousuf",
+  email: "ya@yahoo.in",
+  age:18,
+});
 
-// user1.save(); 
-// user2.save().then((res)=>{
-//   console.log(res);
-// }).catch((err)=>{
-//   console.log(err);
-// });
+user1.save(); 
+user2.save().then((res)=>{
+  console.log(res);
+}).catch((err)=>{
+  console.log(err);
+});
 // ye save function bhi async function hai , jo ki promise return karta hai , so we can use .then and .catch with it
 // user1.save().then(()=>{console.log("data saved")}).catch((err)=>{console.log(err)});
 
@@ -57,4 +57,23 @@ User.insertMany([
   {name:"bruce",email:"bruce@mail.com", age:19},
 ]).then((res)=>{
   console.log(res)
+});
+
+//find in Mongoose
+User.find({}).then((res)=>{
+  console.log(res);
+}).catch((err)=>{
+  console.log(err);
+});
+
+User.findOne({age:19}).then((res)=>{
+  console.log(res);
+}).catch((err)=>{
+  console.log(err);
+});
+
+User.findById({_id:'68cc104e9370ef802230420b'}).then((res)=>{
+  console.log(res);
+}).catch((err)=>{
+  console.log(err);
 });
