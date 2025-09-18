@@ -77,3 +77,8 @@ User.findById({_id:'68cc104e9370ef802230420b'}).then((res)=>{
 }).catch((err)=>{
   console.log(err);
 });
+
+//update
+User.updateOne({name:"Youduf"},{name:"Yousuf"}).then((res)=>{
+  console.log(res);
+});
