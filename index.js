@@ -90,3 +90,22 @@ User.updateMany({age:{ $gt:20 } },{age:20}).then((res)=>{
 User.findOneAndUpdate({age:{ $gt:19 } },{age:24},{new:true}).then((res)=>{
   console.log(res);
 });
+
+//Delete //Model.deleteOne() //returns count
+
+User.deleteOne({name:"Naba"}).then((res)=>{
+  console.log(res);
+});
+
+User.deleteMany({age:{$gt:45}}).then((res)=>{
+  console.log(res);
+});
+
+//returns object
+
+User.findByIdAndDelete({_id:"68cc104e9370ef802230420b"}).then((res)=>{
+  console.log(res);
+});
+User.findOneAndDelete({name:"shark"}).then((res)=>{
+  console.log(res);
+});
