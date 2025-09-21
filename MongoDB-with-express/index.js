@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const Chat = require("./models/chat.js");
+app.use(express.static(path.join(__dirname, "public")))
 
 app.set("views" , path.join(__dirname,"views"));
 app.set("view engine" , "ejs");
@@ -18,19 +19,15 @@ main()
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/whatsapp');
 }
-
-let chat1 = new Chat({
-    from:"Naba",
-    to:"saba",
-    msg:"Hey! Saba whatsup",
-    created_at: new Date(),
-});
-chat1.save().then((res)=>{
-    console.log("chat saved successfully");
-});
-
 app.get("/",(req,res)=>{
     res.send("root is working");
+})
+
+//index rout
+app.get('/chats', async (req,res)=>{
+    const chats = await Chat.find();
+    console.log(chats);
+    res.render("index.ejs",{chats});
 })
 
 app.listen(8080,()=>{
